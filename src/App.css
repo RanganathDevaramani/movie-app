@@ -1,0 +1,12 @@
+.carousel-imgs{
+  height: 600px;
+}
+.action{
+  font-size: 30px;
+}
+.scrolling-wrapper {
+  overflow-x: scroll;
+  overflow-y: hidden;
+  white-space: nowrap;
+  -webkit-overflow-scrolling: touch;
+}
