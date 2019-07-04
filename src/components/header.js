@@ -1,5 +1,5 @@
 import React from 'react';
-import {AppBar, Toolbar, Typography, InputBase } from '@material-ui/core';
+import { AppBar, Toolbar, Typography, InputBase } from '@material-ui/core';
 import { fade } from '@material-ui/core/styles';
 import SearchIcon from '@material-ui/icons/Search';
 import AccountCircle from '@material-ui/icons/AccountCircle';
@@ -30,7 +30,7 @@ const styles = theme => ({
       backgroundColor: fade(theme.palette.common.white, 0.25),
     },
     marginLeft: 0,
-    marginRight : '20px',
+    marginRight: '20px',
     width: '100%',
     [theme.breakpoints.up('sm')]: {
       marginLeft: theme.spacing(1),
@@ -63,37 +63,26 @@ const styles = theme => ({
 });
 
 class NavigationBar extends React.Component {
-  render(){
+  render() {
     const { classes } = this.props;
     return (
       <div>
         <div className={classes.root}>
 
-          <AppBar position="static" style={{ backgroundColor : '#a83960',}}>
+          <AppBar position="static" style={{ backgroundColor: '#a83960', }}>
             <Toolbar>
               <Typography className={classes.title} variant="h5">
-                <Link to='/' style={{ color : "white", fontSize : "30px", fontWeight:"bold"}}>HopeYouEnjoy</Link>
+                <Link to='/' style={{ color: "white", fontSize: "30px", fontWeight: "bold" }}>Hope You Enjoy</Link>
               </Typography>
               <div>
-              <Link to='/' style={{ color : "white", marginRight: "15px"}}><Home/></Link>
+                <Link to='/' style={{ color: "white", marginRight: "15px" }}><Home /></Link>
               </div>
-              <div className={classes.search}>
-                <div className={classes.searchIcon}>
-                  <SearchIcon />
-                </div>
-                <InputBase
-                  placeholder="Search…"
-                  onChange = {this.handleSearch}
-                  classes={{
-                    root: classes.inputRoot,
-                    input: classes.inputInput,
-                  }}
-                  inputProps={{ 'aria-label': 'Search' }}
-                />
-              </div>
-              
               <div>
-                  <AccountCircle/>
+                <Link to='/movie/search' style={{ color: "white", marginRight: "15px" }}><SearchIcon /></Link>
+              </div>
+
+              <div>
+                <AccountCircle />
               </div>
             </Toolbar>
           </AppBar>
@@ -105,6 +94,6 @@ class NavigationBar extends React.Component {
 
 NavigationBar.propTypes = {
   classes: PropTypes.object.isRequired,
-}; 
+};
 
 export default withStyles(styles)(NavigationBar);

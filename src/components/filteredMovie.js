@@ -39,7 +39,7 @@ const styles = theme => ({
   }
 });
 
-class MovieList extends React.Component{
+class FilteredMovie extends React.Component{
     constructor(props){
         super(props)
         this.state = {
@@ -53,6 +53,13 @@ class MovieList extends React.Component{
         .then(response => this.setState(() => ({ movies : response.data.values })))
     }
 
+    //gettign an filtered movie details to render, then set the state with the filtered movies
+    handleSearch  = (movies)=>{
+        this.setState(()=>({
+            movies
+        }))
+    }
+
     render(){
         const lastNMovies = 10
         //Filtering the last 10 elements from movie array
@@ -60,6 +67,9 @@ class MovieList extends React.Component{
         const { classes } = this.props;
         return(
             <div className={classes.grid}>
+                
+                {/*Importing searchBar component to recieve the props */}
+                <SearchBar handleSearch={this.handleSearch}/>
                 <Container fixed>
                     <span className={classes.genre}>Action</span>
                     <Fab style={{ backgroundColor: "#a83960"}} aria-label="Add" className={classes.fab}>
@@ -76,7 +86,7 @@ class MovieList extends React.Component{
                         {
                             movielist.map( movie => {
                                 return (
-                                        <Grid item xs={12} sm={3} md={2}>
+                                        <Grid item xs={4} sm={3} md={2}>
                                         <Card className={classes.card} >
                                             <CardActionArea>
                                                 <CardMedia
@@ -109,8 +119,8 @@ class MovieList extends React.Component{
     }
 }
 
-MovieList.propTypes = {
+FilteredMovie.propTypes = {
     classes: PropTypes.object.isRequired,
   }; 
 
-export default withStyles(styles)(MovieList);
+export default withStyles(styles)(FilteredMovie);
