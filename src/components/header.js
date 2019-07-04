@@ -15,51 +15,6 @@ const styles = theme => ({
   menuButton: {
     marginRight: theme.spacing(2),
   },
-  title: {
-    flexGrow: 1,
-    display: 'none',
-    [theme.breakpoints.up('sm')]: {
-      display: 'block',
-    },
-  },
-  search: {
-    position: 'relative',
-    borderRadius: theme.shape.borderRadius,
-    backgroundColor: fade(theme.palette.common.white, 0.15),
-    '&:hover': {
-      backgroundColor: fade(theme.palette.common.white, 0.25),
-    },
-    marginLeft: 0,
-    marginRight: '20px',
-    width: '100%',
-    [theme.breakpoints.up('sm')]: {
-      marginLeft: theme.spacing(1),
-      width: 'auto',
-    },
-  },
-  searchIcon: {
-    width: theme.spacing(7),
-    height: '100%',
-    position: 'absolute',
-    pointerEvents: 'none',
-    display: 'flex',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-  inputRoot: {
-    color: 'inherit',
-  },
-  inputInput: {
-    padding: theme.spacing(1, 1, 1, 7),
-    transition: theme.transitions.create('width'),
-    width: '100%',
-    [theme.breakpoints.up('sm')]: {
-      width: 120,
-      '&:focus': {
-        width: 200,
-      },
-    },
-  },
 });
 
 class NavigationBar extends React.Component {
@@ -72,18 +27,17 @@ class NavigationBar extends React.Component {
           <AppBar position="static" style={{ backgroundColor: '#a83960', }}>
             <Toolbar>
               <Typography className={classes.title} variant="h5">
-                <Link to='/' style={{ color: "white", fontSize: "30px", fontWeight: "bold" }}>Hope You Enjoy</Link>
+                <Link to='/' style={{ color: "white", fontSize: "20px", fontWeight: "bold", float:'right'}}>Hope You Enjoy</Link>
               </Typography>
-              <div>
-                <Link to='/' style={{ color: "white", marginRight: "15px" }}><Home /></Link>
-              </div>
-              <div>
-                <Link to='/movie/search' style={{ color: "white", marginRight: "15px" }}><SearchIcon /></Link>
-              </div>
-
-              <div>
-                <AccountCircle />
-              </div>
+                <div>
+                  <Link to='/' style={{ color: "white", marginRight: "15px" }}><Home /></Link>
+                </div>
+                <div>
+                  <Link to='/search' style={{ color: "white", marginRight: "15px" }}><SearchIcon /></Link>
+                </div>
+                <div>
+                  <AccountCircle style={{ float : "right"}}/>
+                </div>
             </Toolbar>
           </AppBar>
         </div>

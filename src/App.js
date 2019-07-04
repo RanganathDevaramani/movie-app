@@ -19,7 +19,7 @@ function App() {
         <Route path='/movie/:id' component= {MovieShow} exact={true}></Route>
         <Route path="/movies/new" component={NewMovie} exact = {true}></Route>
         <Route path="/movie/edit/:id" component={EditMovie} exact={true}></Route>
-        <Route path="/movie/search" component = {FilteredMovie} exact={true}/>
+        <Route path="/search" component = {FilteredMovie} exact={true}/>
       </Switch>
       
     </BrowserRouter>

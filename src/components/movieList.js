@@ -76,7 +76,7 @@ class MovieList extends React.Component{
                         {
                             movielist.map( movie => {
                                 return (
-                                        <Grid item xs={12} sm={3} md={2}>
+                                        <Grid item xs={12} sm={4} md={2}>
                                         <Card className={classes.card} >
                                             <CardActionArea>
                                                 <CardMedia
@@ -88,8 +88,8 @@ class MovieList extends React.Component{
                                                 />
                                                 <CardContent>
                                                 <Typography gutterBottom variant="h5" component="h2" noWrap>
-                                                <div className={classes.titlename} > 
-                                                    <Link to={`/movie/${movie.id}`}>{movie.title}</Link>
+                                                <div  > 
+                                                    <Link to={`/movie/${movie.id}`} className={classes.titlename}>{movie.title}</Link>
                                                 </div>
                                                 </Typography>
                                                 <Typography variant="body2" color="textSecondary" component="p" noWrap>
