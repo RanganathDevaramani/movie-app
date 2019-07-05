@@ -1,8 +1,6 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 import axios from 'axios'
-import Fab from '@material-ui/core/Fab';
-import AddIcon from '@material-ui/icons/Add';
 import { withStyles } from '@material-ui/core/styles';
 import {Card, Container,Typography, Grid, CardMedia, CardContent, CardActionArea} from '@material-ui/core';
 import PropTypes from 'prop-types';

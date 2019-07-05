@@ -15,7 +15,7 @@ class SearchBar extends React.Component {
             .then(response => {
                 this.setState({
                     //filtering out the movies which is equal to input value
-                    movies: response.data.values.filter(movie => movie.title.toLowerCase() == this.state.inputValue.toLowerCase())
+                    movies: response.data.values.filter(movie => movie.title.toLowerCase() === this.state.inputValue.toLowerCase())
                 })
                 this.props.handleSearch(this.state.movies)
             })

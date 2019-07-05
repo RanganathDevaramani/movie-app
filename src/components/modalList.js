@@ -6,6 +6,7 @@ import AddIcon from '@material-ui/icons/Add';
 import { withStyles } from '@material-ui/core/styles';
 import {Card, Container,Typography, Grid, CardMedia, CardContent, CardActionArea} from '@material-ui/core';
 import PropTypes from 'prop-types';
+import ModalComp from './modal'
 
 const styles = theme => ({
   card: {
@@ -38,11 +39,13 @@ const styles = theme => ({
   }
 });
 
-class MovieList extends React.Component{
+class ModalMovieList extends React.Component{
     constructor(props){
         super(props)
         this.state = {
-            movies : []
+            movies : [],
+            show : false,
+            moviez : {}
         } 
     }
 
@@ -52,6 +55,13 @@ class MovieList extends React.Component{
         .then(response => this.setState(() => ({ movies : response.data.values })))
     }
 
+    handleShow = (movie) => {
+        this.setState({ show : true , moviez : movie})
+    }
+
+    handleClose = () => {
+        this.setState({ show : false })
+    }
 
     render(){
         const lastNMovies = 10
@@ -61,7 +71,7 @@ class MovieList extends React.Component{
         return(
             <div className={classes.grid}>
                 <Container fixed>
-                    <span className={classes.genre}>Action</span>
+                    <span className={classes.genre}>Comedy</span>
                     <Fab style={{ backgroundColor: "#a83960"}} aria-label="Add" className={classes.fab}>
                         <Link to='/movies/new'><AddIcon /></Link>
                     </Fab>
@@ -77,7 +87,7 @@ class MovieList extends React.Component{
                             movielist.map( movie => {
                                 return (
                                         <Grid item xs={12} sm={4} md={3}>
-                                            <Link to={`/movie/${movie.id}`}  >
+                                            <div onClick={() => this.handleShow(movie)}>
                                                 <Card className={classes.card} >
                                                     <CardActionArea>
                                                         <CardMedia
@@ -97,20 +107,25 @@ class MovieList extends React.Component{
                                                         </CardContent>
                                                     </CardActionArea>
                                                 </Card>
-                                            </Link>
+                                            </div>
                                         </Grid>
                                 )
                             })
                         }
                     </Grid>
                 </Container>
+                <ModalComp 
+                    handleClose={this.handleClose}
+                    show = {this.state.show}
+                    movies = {this.state.moviez}
+                />
             </div>
         )
     }
 }
 
-MovieList.propTypes = {
+ModalMovieList.propTypes = {
     classes: PropTypes.object.isRequired,
   }; 
 
-export default withStyles(styles)(MovieList);
+export default withStyles(styles)(ModalMovieList);
