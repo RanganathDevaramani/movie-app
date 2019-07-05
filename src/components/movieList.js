@@ -76,7 +76,7 @@ class MovieList extends React.Component{
                         {
                             movielist.map( movie => {
                                 return (
-                                        <Grid item xs={12} sm={4} md={2}>
+                                        <Grid item xs={12} sm={4} md={3}>
                                         <Card className={classes.card} >
                                             <CardActionArea>
                                                 <CardMedia

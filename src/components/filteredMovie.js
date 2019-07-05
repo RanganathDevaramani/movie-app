@@ -26,13 +26,6 @@ const styles = theme => ({
       marginTop : '20px',
       fontWeight : 600
   },
-  fab : {
-    maxWidth : '40px',
-    maxHeight : "40px",
-    float : 'right',
-    marginTop : "20px",
-    color : "white"
-  },
   titlename : {
       fontSize : "13px",
       color : "black"
@@ -49,7 +42,7 @@ class FilteredMovie extends React.Component{
 
     //Getting all the movies in the page 1884 
     componentDidMount(){
-        axios.get('http://training.mobignosis.net/movies?page=1884&limit=10')
+        axios.get('http://training.mobignosis.net/movies')
         .then(response => this.setState(() => ({ movies : response.data.values })))
     }
 
@@ -61,9 +54,6 @@ class FilteredMovie extends React.Component{
     }
 
     render(){
-        const lastNMovies = 10
-        //Filtering the last 10 elements from movie array
-        const movielist = this.state.movies.reverse().slice((this.state.movies.length - lastNMovies), this.state.movies.length)
         const { classes } = this.props;
         return(
             <div className={classes.grid}>
@@ -71,10 +61,6 @@ class FilteredMovie extends React.Component{
                 {/*Importing searchBar component to recieve the props */}
                 <SearchBar handleSearch={this.handleSearch}/>
                 <Container fixed>
-                    <span className={classes.genre}>Action</span>
-                    <Fab style={{ backgroundColor: "#a83960"}} aria-label="Add" className={classes.fab}>
-                        <Link to='/movies/new'><AddIcon /></Link>
-                    </Fab>
                     <Grid
                         container
                         spacing={3}
@@ -84,7 +70,7 @@ class FilteredMovie extends React.Component{
                     >
                         {/* Mapping over the movie list */}
                         {
-                            movielist.map( movie => {
+                            this.state.movies.map( movie => {
                                 return (
                                         <Grid item xs={4} sm={3} md={2}>
                                         <Card className={classes.card} >

@@ -41,7 +41,7 @@ class SearchBar extends React.Component {
     render() {
         console.log(this.state.movies)
         return (
-            <div align="center">
+            <div align="center" style={{ marginBottom : "40px"}}>
                 <form >
                     <input
                         placeholder="Search here.."
